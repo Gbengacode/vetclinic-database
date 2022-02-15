@@ -63,11 +63,24 @@ INSERT INTO animals(
     11
 );
 
+INSERT INTO ANIMALS(
+	ID,
+	NAME,
+	DATE_OF_BIRTH,
+	ESCAPE_ATTEMPTS,
+	NEUTERED,
+	WEIGHT_KG)
+VALUES(5, 'Charmander', '2020-02-08', 0, FALSE, 11);
 
-INSERT INTO animals(id, name, date_of_birth, escape_attempts, neutered, weight_kg) VALUES(5, 'Charmander', '2020-02-08', 0, FALSE, 11);
 
-INSERT INTO animals(id, name, date_of_birth, escape_attempts, neutered, weight_kg) VALUES(6, 'Plantmon', '2022-11-15', 2, TRUE, 5.7);
-
+INSERT INTO ANIMALS(
+	ID,
+	NAME,
+	DATE_OF_BIRTH,
+	ESCAPE_ATTEMPTS,
+	NEUTERED,
+	WEIGHT_KG)
+VALUES(6, 'Plantmon', '2022-11-15', 2, TRUE, 5.7);
 INSERT INTO ANIMALS(
 	ID,
 	NAME,
