@@ -33,3 +33,83 @@ SELECT *  FROM animals WHERE name <> 'Gabumon';
 
 SELECT * FROM animals WHERE weight_kg >=10.4 AND weight_kg <=17.3;
 
+
+/* transaction */
+/*  a transaction update the animals table by setting the species column to unspecified*/
+
+BEGIN;
+
+
+UPDATE animals SET species = 'unspecified';
+
+ROLLBACK;
+
+
+/*Update the animals table by setting the species column to digimon for all animals that have a name ending in mon.*/
+
+BEGIN;
+UPDATE animals SET species = 'digimon' WHERE name LIKE '%mon';
+
+/* Update the animals table by setting the species column to pokemon for all animals that don't have species already set. */
+
+UPDATE animals SET species = 'pokemon' WHERE species IS NULL;
+
+COMMIT;
+
+/*delete all records in the animals table, then roll back the transaction. */
+BEGIN;
+DELETE FROM animals;
+ROLLBACK;
+
+/*if all records in the animals table still exist. */
+SELECT * FROM animals;
+
+
+
+BEGIN;
+SAVEPOINT SP1
+
+DELETE FROM animals where date_of_birth > '2022-01-01';
+ROLLBACK TO SP1
+
+BEGIN;
+
+SAVEPOINT SP1
+
+DELETE FROM animals where date_of_birth > '2022-01-01';
+UPDATE animals SET weight_kg  = weight_kg * -1;
+
+ROLLBACK TO SP1
+
+UPDATE animals SET weight_kg = weight_kg * -1 WHERE weight_kg < 0;
+
+COMMIT;
+
+
+/*How many animals are there?*/
+SELECT COUNT(*) FROM animals;
+
+
+/*How many animals have never tried to escape?*/
+SELECT count(*) FROM animals WHERE escape_attempts = 0;
+
+/*What is the average weight of animals?*/
+
+SELECT ROUND(AVG(weight_kg), 4) FROM animals;
+
+/*Who escapes the most, neutered or not neutered animals?*/
+
+SELECT MAX(escape_attempts), neutered FROM animals GROUP BY neutered;
+
+/*What is the minimum and maximum weight of each type of animal?*/
+
+SELECT MIN(weight_kg), species FROM animals GROUP BY species;
+
+/*What is the average number of escape attempts per animal type of those born between 1990 and 2000?*/
+
+SELECT DISTINCT ROUND(AVG(escape_attempts), 4),
+species	
+FROM animals
+GROUP BY species, date_of_birth 
+HAVING date_of_birth >= '1990-01-01' 
+AND date_of_birth <='2000-01-01';

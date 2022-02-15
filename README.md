@@ -4,13 +4,6 @@ Vet clinic database
 
 > In this project I will use a relational database to create the initial data structure for a vet clinic. I will create a table to store animals' information, insert some data into it, and query it.
 
-
-## Screenshots:
-
-![screenshot](scr1.png)
-
-Porject's features are added into seperate branch to keep dev safe.
-
 ## Built With
 
 - SQL
