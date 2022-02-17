@@ -105,11 +105,75 @@ SELECT MAX(escape_attempts), neutered FROM animals GROUP BY neutered;
 
 SELECT MIN(weight_kg), species FROM animals GROUP BY species;
 
-/*What is the average number of escape attempts per animal type of those born between 1990 and 2000?*/
+/*What is the average number of escape attempts per 
+animal type of those born between 1990 and 2000?*/
 
-SELECT DISTINCT ROUND(AVG(escape_attempts), 4),
-species	
-FROM animals
+SELECT 
+DISTINCT
+ROUND(AVG(escape_attempts), 4), species	
+FROM animals 
 GROUP BY species, date_of_birth 
 HAVING date_of_birth >= '1990-01-01' 
 AND date_of_birth <='2000-01-01';
+
+-- What animals belong to Melody Pond?
+
+SELECT ANIMALS.NAME
+FROM ANIMALS
+JOIN OWNERS ON ANIMALS.OWNERS_ID = OWNERS.ID
+WHERE ANIMALS.OWNERS_ID =
+		(SELECT ID
+			FROM OWNERS
+			WHERE FULL_NAME = 'Melody Pond');
+
+-- List of all animals that are pokemon (their type is Pokemon).
+
+SELECT ANIMALS.NAME
+FROM ANIMALS
+JOIN SPECIES ON ANIMALS.SPECIES_ID = SPECIES.ID
+WHERE ANIMALS.SPECIES_ID =
+		(SELECT ID
+			FROM SPECIES
+			WHERE NAME = 'Pokemon');
+
+-- List all owners and their animals, remember to include those that don't own any animal.
+
+SELECT *
+FROM ANIMALS
+FULL JOIN OWNERS ON ANIMALS.OWNERS_ID = OWNERS.ID; 
+
+
+-- How many animals are there per species?
+SELECT SPECIES.NAME, 
+COUNT(ANIMALS.NAME)
+FROM ANIMALS
+JOIN SPECIES ON ANIMALS.SPECIES_ID = SPECIES.ID
+GROUP BY SPECIES.NAME; 
+
+-- List all Digimon owned by Jennifer Orwell.
+SELECT *
+FROM ANIMALS
+JOIN OWNERS ON ANIMALS.OWNERS_ID = OWNERS.ID 
+WHERE OWNERS.FULL_NAME = 'Jennifer Orwell'
+	AND ANIMALS.SPECIES_ID = 
+		(SELECT ID
+			FROM SPECIES 
+			WHERE NAME = 'Digimon');
+
+-- List all animals owned by Dean Winchester that haven't tried to escape.
+
+SELECT *
+FROM ANIMALS
+JOIN OWNERS ON ANIMALS.OWNERS_ID = OWNERS.ID 
+WHERE OWNERS.FULL_NAME = 'Dean Winchester'
+	AND ANIMALS.ESCAPE_ATTEMPTS = 0;
+
+-- Who owns the most animals?
+
+SELECT COUNT(OWNERS.ID),
+	OWNERS.FULL_NAME
+FROM ANIMALS
+JOIN OWNERS ON ANIMALS.OWNERS_ID = OWNERS.ID
+GROUP BY OWNERS.ID
+ORDER BY COUNT DESC
+LIMIT 1;
