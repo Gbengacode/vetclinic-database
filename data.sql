@@ -228,3 +228,365 @@ SET OWNERS_ID =
 (SELECT ID FROM OWNERS WHERE FULL_NAME = 'Dean Winchester')
 WHERE NAME = 'Angemon'
 OR NAME = 'Boarmon'
+
+
+
+-- insert the following data for vets
+INSERT INTO VETS(
+  NAME, 
+  AGE,
+  DATE_OF_GRADUATION
+)
+ VALUES
+ (
+	 'Vet William Tatcher',
+	 45, 
+	 '2000-4-23'
+ 
+ );
+ 
+ 
+ INSERT INTO VETS(
+  NAME, 
+  AGE,
+  DATE_OF_GRADUATION
+)
+ VALUES
+ (
+	 'Vet Maisy Smith',
+	 26, 
+	 '2019-01-17'
+ 
+ );
+ 
+ 
+ 
+ INSERT INTO VETS(
+  NAME, 
+  AGE,
+  DATE_OF_GRADUATION
+)
+ VALUES
+ (
+	 'Vet Stephanie Mendez',
+	 64, 
+	 '1981-05-04'
+ 
+ );
+ 
+  INSERT INTO VETS(
+  NAME, 
+  AGE,
+  DATE_OF_GRADUATION
+)
+ VALUES
+ (
+	 'Vet Jack Harkness',
+	 38, 
+	 '2008-06-08'
+ 
+ );
+
+-- Insert the following data for specialties
+
+ INSERT INTO SPECIALIZATIONS (
+ VID,
+ SID
+)
+VALUES (
+ (SELECT ID FROM VETS WHERE NAME = 'Vet William Tatcher'),
+ (SELECT ID FROM SPECIES WHERE NAME = 'Pokemon')
+);
+
+INSERT INTO SPECIALIZATIONS (
+ VID,
+ SID
+)
+VALUES (
+ (SELECT ID FROM VETS WHERE NAME = 'Vet Stephanie Mendez'),
+ (SELECT ID FROM SPECIES WHERE NAME = 'Pokemon')
+);
+
+-- Insert the following data for specialties:
+
+INSERT INTO SPECIALIZATIONS (
+ VID,
+ SID
+)
+VALUES (
+ (SELECT ID FROM VETS WHERE NAME = 'Vet Stephanie Mendez'),
+ (SELECT ID FROM SPECIES WHERE NAME = 'Digimon')
+);
+
+INSERT INTO SPECIALIZATIONS (
+ VID,
+ SID
+)
+VALUES (
+ (SELECT ID FROM VETS WHERE NAME = 'Vet Jack Harkness'),
+ (SELECT ID FROM SPECIES WHERE NAME = 'Digimon')
+);
+
+
+
+
+
+-- Insert the following data for visits
+
+INSERT INTO VISITS (
+  AID, 
+  VID,
+  VISITED_DATE
+)
+VALUES 
+(
+ (SELECT ID FROM ANIMALS WHERE NAME = 'Agumon'),
+ (SELECT ID FROM VETS WHERE NAME = 'Vet William Tatcher'),
+ '2020-05-24'
+)
+
+INSERT INTO VISITS (
+  AID, 
+  VID,
+  VISITED_DATE
+)
+VALUES 
+(
+ (SELECT ID FROM ANIMALS WHERE NAME = 'Agumon'),
+ (SELECT ID FROM VETS WHERE NAME = 'Vet Stephanie Mendez'),
+ '2020-07-22'
+);
+
+INSERT INTO VISITS (
+  AID, 
+  VID,
+  VISITED_DATE
+)
+VALUES 
+(
+ (SELECT ID FROM ANIMALS WHERE NAME = 'Gabumon'),
+ (SELECT ID FROM VETS WHERE NAME = 'Vet Jack Harkness'),
+ '2021-02-02'
+);
+
+INSERT INTO VISITS (
+  AID, 
+  VID,
+  VISITED_DATE
+)
+VALUES 
+(
+ (SELECT ID FROM ANIMALS WHERE NAME = 'Pikachu'),
+ (SELECT ID FROM VETS WHERE NAME = 'Vet Maisy Smith'),
+ '2020-01-05'
+);
+
+
+INSERT INTO VISITS (
+  AID, 
+  VID,
+  VISITED_DATE
+)
+VALUES 
+(
+ (SELECT ID FROM ANIMALS WHERE NAME = 'Pikachu'),
+ (SELECT ID FROM VETS WHERE NAME = 'Vet Maisy Smith'),
+ '2020-03-08'
+);
+
+
+INSERT INTO VISITS (
+  AID, 
+  VID,
+  VISITED_DATE
+)
+VALUES 
+(
+ (SELECT ID FROM ANIMALS WHERE NAME = 'Pikachu'),
+ (SELECT ID FROM VETS WHERE NAME = 'Vet Maisy Smith'),
+ '2020-05-14'
+);
+
+
+INSERT INTO VISITS (
+  AID, 
+  VID,
+  VISITED_DATE
+)
+VALUES 
+(
+ (SELECT ID FROM ANIMALS WHERE NAME = 'Devimon'),
+ (SELECT ID FROM VETS WHERE NAME = 'Vet Stephanie Mendez'),
+ '2021-05-04'
+);
+
+INSERT INTO VISITS (
+  AID, 
+  VID,
+  VISITED_DATE
+)
+VALUES 
+(
+ (SELECT ID FROM ANIMALS WHERE NAME = 'Charmander'),
+ (SELECT ID FROM VETS WHERE NAME = 'Vet Jack Harkness'),
+ '2021-02-24'
+);
+
+INSERT INTO VISITS (
+  AID, 
+  VID,
+  VISITED_DATE
+)
+VALUES 
+(
+ (SELECT ID FROM ANIMALS WHERE NAME = 'Plantmon'),
+ (SELECT ID FROM VETS WHERE NAME = 'Vet Maisy Smith'),
+ '2019-12-21'
+);
+
+
+
+INSERT INTO VISITS (
+  AID, 
+  VID,
+  VISITED_DATE
+)
+VALUES 
+(
+ (SELECT ID FROM ANIMALS WHERE NAME = 'Plantmon'),
+ (SELECT ID FROM VETS WHERE NAME = 'Vet William Tatcher'),
+ '2020-08-10'
+);
+
+
+INSERT INTO VISITS (
+  AID, 
+  VID,
+  VISITED_DATE
+)
+VALUES 
+(
+ (SELECT ID FROM ANIMALS WHERE NAME = 'Plantmon'),
+ (SELECT ID FROM VETS WHERE NAME = 'Vet Maisy Smith'),
+ '2020-04-07'
+);
+
+
+INSERT INTO VISITS (
+  AID, 
+  VID,
+  VISITED_DATE
+)
+VALUES 
+(
+ (SELECT ID FROM ANIMALS WHERE NAME = 'Angemon'),
+ (SELECT ID FROM VETS WHERE NAME = 'Vet Jack Harkness'),
+ '2020-10-03'
+);
+
+
+INSERT INTO VISITS (
+  AID, 
+  VID,
+  VISITED_DATE
+)
+VALUES 
+(
+ (SELECT ID FROM ANIMALS WHERE NAME = 'Angemon'),
+ (SELECT ID FROM VETS WHERE NAME = 'Vet Jack Harkness'),
+ '2020-11-04'
+);
+
+
+INSERT INTO VISITS (
+  AID, 
+  VID,
+  VISITED_DATE
+)
+VALUES 
+(
+ (SELECT ID FROM ANIMALS WHERE NAME = 'Squirtle'),
+ (SELECT ID FROM VETS WHERE NAME = 'Vet Stephanie Mendez'),
+ '2020-04-07'
+);
+
+
+
+INSERT INTO VISITS (
+  AID, 
+  VID,
+  VISITED_DATE
+)
+VALUES 
+(
+ (SELECT ID FROM ANIMALS WHERE NAME = 'Boarmon'),
+ (SELECT ID FROM VETS WHERE NAME = 'Vet Maisy Smith'),
+ '2019-01-24'
+);
+
+
+INSERT INTO VISITS (
+  AID, 
+  VID,
+  VISITED_DATE
+)
+VALUES 
+(
+ (SELECT ID FROM ANIMALS WHERE NAME = 'Boarmon'),
+ (SELECT ID FROM VETS WHERE NAME = 'Vet Maisy Smith'),
+ '2019-05-15'
+);
+
+
+INSERT INTO VISITS (
+  AID, 
+  VID,
+  VISITED_DATE
+)
+VALUES 
+(
+ (SELECT ID FROM ANIMALS WHERE NAME = 'Boarmon'),
+ (SELECT ID FROM VETS WHERE NAME = 'Vet Maisy Smith'),
+ '2020-02-27'
+);
+
+INSERT INTO VISITS (
+  AID, 
+  VID,
+  VISITED_DATE
+)
+VALUES 
+(
+ (SELECT ID FROM ANIMALS WHERE NAME = 'Boarmon'),
+ (SELECT ID FROM VETS WHERE NAME = 'Vet Maisy Smith'),
+ '2020-08-03'
+);
+
+INSERT INTO VISITS (
+  AID, 
+  VID,
+  VISITED_DATE
+)
+VALUES 
+(
+ (SELECT ID FROM ANIMALS WHERE NAME = 'Boarmon'),
+ (SELECT ID FROM VETS WHERE NAME = 'Vet Stephanie Mendez'),
+ '2020-05-24'
+);
+
+INSERT INTO VISITS (
+  AID, 
+  VID,
+  VISITED_DATE
+)
+VALUES 
+(
+ (SELECT ID FROM ANIMALS WHERE NAME = 'Boarmon'),
+ (SELECT ID FROM VETS WHERE NAME = 'Vet William Tatcher'),
+ '2021-01-11'
+);
+
+
+
+
+
